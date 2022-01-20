@@ -1,6 +1,7 @@
 @extends('layout.guest')
 
 @section('content')
+    <a href="{{ route('welcome') }}">Welcome</a>
     <div class="h-full w-full flex flex-col justify-center items-center">
         <div class="flex flex-col">
             <h1 class="bg-green-500 bg-opacity-95 rounded-t-md px-4 text-gray-700 text-3xl font-bungee self-start">Login</h1>

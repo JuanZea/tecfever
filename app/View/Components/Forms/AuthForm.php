@@ -9,7 +9,6 @@ class AuthForm extends Component
     public $action;
     public $type;
 
-
     public function __construct($action, $type)
     {
         $this->action = $action;

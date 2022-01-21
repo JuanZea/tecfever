@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Views;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class WelcomeTest extends TestCase
@@ -17,7 +15,7 @@ class WelcomeTest extends TestCase
     {
         $view = $this->view('welcome');
 
-        $contents = (string) $this->view('welcome');
+        $contents = (string)$this->view('welcome');
 
         $view->assertSee('Welcome to TecFever');
         $this->assertStringContainsString('bg-red-500', $contents);

@@ -7,9 +7,9 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class LoginTest extends TestCase
+class RegisterTest extends TestCase
 {
-    private const URL = 'login';
+    private const URL = 'register';
 
     public function testAGuestUserCanAccess(): void
     {
@@ -25,6 +25,6 @@ class LoginTest extends TestCase
     {
         $response = $this->get(route(self::URL));
 
-        $response->assertViewIs('auth.login');
+        $response->assertViewIs('auth.register');
     }
 }

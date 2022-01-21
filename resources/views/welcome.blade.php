@@ -2,21 +2,22 @@
 
 @section('content')
     <div class="h-full w-full flex flex-col">
-        
+
         <a href="{{ route('login') }}">
             Login
         </a>
 
-        <a href="{{ route('login') }}">
+        <a href="{{ route('register') }}">
             Register
         </a>
 
         <div class="flex justify-center items-center flex-grow">
             <h1
                 class="
+                    select-none
                     px-4
-                    bg-red-500 
-                    rounded-md 
+                    bg-red-500
+                    rounded-md
                     cursor-pointer
                     text-white
                     text-6xl

@@ -3,7 +3,7 @@
 @section('content')
     <a class="absolute" href="{{ route('welcome') }}">Welcome</a>
     <div class="h-full w-full flex flex-col justify-center items-center">
-        <x-auth-form :action="route('login')" type="login"></x-auth-form>
+        <x-auth-form :action="route('register')" type="register"></x-auth-form>
         @error('email')
             <div> {{ $message }}</div>
         @enderror

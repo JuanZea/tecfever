@@ -1,14 +1,7 @@
 @extends('layout.guest')
 
 @section('content')
-    <a class="absolute" href="{{ route('welcome') }}">Welcome</a>
     <div class="h-full w-full flex flex-col justify-center items-center">
-        <x-auth-form :action="route('login')" type="login"></x-auth-form>
-        @error('email')
-            <div> {{ $message }}</div>
-        @enderror
-        @error('password')
-            <div> {{ $message }}</div>
-        @enderror
+        <x-forms.auth-form :action="route('login')" type="login"></x-forms.auth-form>
     </div>
 @endsection()

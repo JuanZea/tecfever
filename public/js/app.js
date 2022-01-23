@@ -19220,10 +19220,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  components: {
+    ExclamationCircleIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_0__.ExclamationCircleIcon
+  },
   props: {
     label: {
       type: String
+    },
+    labelColor: {
+      type: String,
+      "default": 'text-gray-700'
     },
     id: {
       type: String,
@@ -19234,6 +19243,12 @@ __webpack_require__.r(__webpack_exports__);
       required: true
     },
     placeholder: {
+      type: String
+    },
+    error: {
+      type: String
+    },
+    old: {
       type: String
     }
   }
@@ -19278,26 +19293,44 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = ["for"];
-var _hoisted_2 = {
-  "class": "mt-1"
+var _hoisted_2 = ["type", "value", "name", "id", "placeholder"];
+var _hoisted_3 = {
+  "class": "text-red-900"
 };
-var _hoisted_3 = ["type", "name", "id", "placeholder"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
+  var _component_ExclamationCircleIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ExclamationCircleIcon");
+
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [$props.label ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("label", {
     key: 0,
     "for": $props.id,
-    "class": "block text-sm font-medium text-gray-700"
-  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.label), 9
-  /* TEXT, PROPS */
-  , _hoisted_1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)("block text-sm font-medium ".concat($props.labelColor))
+  }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.label), 11
+  /* TEXT, CLASS, PROPS */
+  , _hoisted_1)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+      'relative': true,
+      'mt-1': $props.label
+    })
+  }, [$props.error ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_ExclamationCircleIcon, {
+    key: 0,
+    "class": "absolute h-5 text-red-500 right-2 top-2"
+  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: $props.type,
+    value: $props.old,
     name: $props.id,
     id: $props.id,
-    "class": "shadow-sm focus:ring-gray-700 focus:border-gray-700 block w-full sm:text-sm border-gray-300 rounded-md",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)({
+      input: true,
+      'error pr-7': $props.error
+    }),
     placeholder: $props.placeholder
-  }, null, 8
-  /* PROPS */
-  , _hoisted_3)])]);
+  }, null, 10
+  /* CLASS, PROPS */
+  , _hoisted_2)], 2
+  /* CLASS */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.error), 1
+  /* TEXT */
+  )]);
 }
 
 /***/ }),
@@ -19345,9 +19378,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 /* harmony import */ var _components_CInput__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/CInput */ "./resources/js/components/CInput.vue");
 /* harmony import */ var _components_buttons_LogoutButton__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/buttons/LogoutButton */ "./resources/js/components/buttons/LogoutButton.vue");
-/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
 
 
 
@@ -19355,8 +19386,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 (0,vue__WEBPACK_IMPORTED_MODULE_0__.createApp)({
   components: {
     'c-input': _components_CInput__WEBPACK_IMPORTED_MODULE_1__["default"],
-    'logout-button': _components_buttons_LogoutButton__WEBPACK_IMPORTED_MODULE_2__["default"],
-    'home-icon': _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_3__.HomeIcon
+    'logout-button': _components_buttons_LogoutButton__WEBPACK_IMPORTED_MODULE_2__["default"]
   }
 }).mount('#app');
 

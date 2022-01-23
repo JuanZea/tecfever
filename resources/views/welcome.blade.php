@@ -1,16 +1,7 @@
 @extends('layout.guest')
 
 @section('content')
-    <div class="h-full w-full flex flex-col">
-
-        <a href="{{ route('login') }}">
-            Login
-        </a>
-
-        <a href="{{ route('register') }}">
-            Register
-        </a>
-
+    <div class="h-full w-full flex">
         <div class="flex justify-center items-center flex-grow">
             <h1
                 class="

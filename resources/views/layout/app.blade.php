@@ -4,11 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        
+
         <title>{{ config('app.name') }}</title>
     </head>
     <body class="font-ubuntu">
         <main id="app" class="h-screen w-screen">
+            <vue-setup csrf={{csrf_token()}} :routes="{{json_encode(Route::getRoutes()->compile())}}"></vue-setup>
             @yield('main')
         </main>
         <script src="{{ asset('js/app.js') }}"></script>

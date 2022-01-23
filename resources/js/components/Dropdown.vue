@@ -1,11 +1,8 @@
 <template>
-  <div>
-    <Menu as="div" class="relative inline-block text-left">
-      <div>
+    <Menu as="div" class="relative flex items-center">
         <MenuButton>
           <img class="rounded-full cursor-pointer hover:opacity-90" :src="`https://ui-avatars.com/api/?name=${name}&background=FF0000&color=fff&size=50&bold=true`" alt="avatar">
         </MenuButton>
-      </div>
 
       <transition
         enter-active-class="transition duration-100 ease-out"
@@ -16,7 +13,7 @@
         leave-to-class="transform scale-95 opacity-0"
       >
         <MenuItems
-          class="absolute right-0 w-44 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          class="absolute right-0 top-12 w-44 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
         >
           <div class="px-1 py-1">
             <MenuItem v-slot="{ active }">
@@ -35,17 +32,36 @@
                 My profile
               </a>
             </MenuItem>
+            <MenuItem v-slot="{ active }">
+              <button
+                  type="submit"
+                  form="logout-form"
+                :class="[
+                  active ? 'bg-gray-800 text-white' : 'text-gray-900',
+                  'group flex rounded-md items-center w-full px-2 py-2 text-sm',
+                ]"
+              >
+                <LogoutIcon
+                  :active="active"
+                  class="w-5 h-5 mr-2"
+                  aria-hidden="true"
+                />
+                Logout
+              </button>
+            </MenuItem>
           </div>
         </MenuItems>
       </transition>
     </Menu>
-  </div>
+    <form id="logout-form" class="hidden" :action="routes.logout.uri" method="POST"><CsrfToken /></form>
 </template>
 
 <script>
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
-import { UserCircleIcon, LogoutIcon } from '@heroicons/vue/solid'
-import LogoutButton from './buttons/LogoutButton.vue'
+import CsrfToken from './helpers/CsrfToken';
+
+import { routes } from '../use';
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
+import { UserCircleIcon, LogoutIcon } from '@heroicons/vue/solid';
 
 export default {
   name: 'Dropdown',
@@ -60,21 +76,10 @@ export default {
     MenuItem,
     UserCircleIcon,
     LogoutIcon,
-    LogoutButton
+    CsrfToken
   },
+    setup() {
+      return { routes }
+    }
 }
 </script>
-
-/**
-
-<a
-                :class="[
-                  active ? 'bg-gray-800 text-white' : 'text-gray-900',
-                  'group flex rounded-md items-center w-full px-2 py-2 text-sm',
-                ]"
-                :href="logoutRoute"
-              >
-
-              </a>
-
- */

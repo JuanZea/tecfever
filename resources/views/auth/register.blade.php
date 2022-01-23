@@ -2,6 +2,6 @@
 
 @section('content')
     <div class="h-full w-full flex flex-col justify-center items-center">
-        <x-auth-form :action="route('register')" type="register"></x-auth-form>
+        <x-forms.auth-form :action="route('register')" type="register"></x-forms.auth-form>
     </div>
 @endsection()

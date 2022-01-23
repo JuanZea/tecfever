@@ -16,6 +16,9 @@
                     Login
                 </a>
             @endif
+            @if(\Illuminate\Support\Facades\Auth::user())
+                <logout-button action="{{ route('logout') }}" button-class="bg-white px-4 rounded bg-opacity-70 hover:bg-opacity-95 font-bold">@csrf</logout-button>
+            @endif
         </div>
 
         @yield('content')

@@ -11,7 +11,7 @@ createApp({
     components: {
         'vue-setup': VueSetup,
         'c-input': CInput,
-        'mail-icon': MailIcon,
         'dropdown': Dropdown,
+        'mail-icon': MailIcon,
     }
 }).mount('#app');

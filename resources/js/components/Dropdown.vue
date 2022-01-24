@@ -32,6 +32,22 @@
                 My profile
               </a>
             </MenuItem>
+            <MenuItem v-if="panelRoute" v-slot="{ active }">
+              <a
+                :class="[
+                  active ? 'bg-gray-800 text-white' : 'text-gray-900',
+                  'group flex rounded-md items-center w-full px-2 py-2 text-sm',
+                ]"
+                :href="panelRoute"
+              >
+                <PresentationChartLineIcon
+                  :active="active"
+                  class="w-5 h-5 mr-2"
+                  aria-hidden="true"
+                />
+                Panel
+              </a>
+            </MenuItem>
             <MenuItem v-slot="{ active }">
               <button
                   type="submit"
@@ -62,12 +78,14 @@ import CsrfToken from './helpers/CsrfToken';
 import { routes } from '../use';
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
 import { UserCircleIcon, LogoutIcon } from '@heroicons/vue/solid';
+import { PresentationChartLineIcon } from '@heroicons/vue/outline';
 
 export default {
   name: 'Dropdown',
     props: {
       name: { type: String, required: true },
       profileRoute: { type: String, required: true },
+      panelRoute: { type: String, required: true },
     },
   components: {
     Menu,
@@ -76,7 +94,8 @@ export default {
     MenuItem,
     UserCircleIcon,
     LogoutIcon,
-    CsrfToken
+    CsrfToken,
+      PresentationChartLineIcon,
   },
     setup() {
       return { routes }

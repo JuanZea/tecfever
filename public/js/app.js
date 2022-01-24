@@ -20555,8 +20555,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _helpers_CsrfToken__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/CsrfToken */ "./resources/js/components/helpers/CsrfToken.vue");
 /* harmony import */ var _use__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../use */ "./resources/js/use/index.js");
-/* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/components/menu/menu.esm.js");
+/* harmony import */ var _headlessui_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @headlessui/vue */ "./node_modules/@headlessui/vue/dist/components/menu/menu.esm.js");
 /* harmony import */ var _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @heroicons/vue/solid */ "./node_modules/@heroicons/vue/solid/esm/index.js");
+/* harmony import */ var _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @heroicons/vue/outline */ "./node_modules/@heroicons/vue/outline/esm/index.js");
+
 
 
 
@@ -20571,16 +20573,21 @@ __webpack_require__.r(__webpack_exports__);
     profileRoute: {
       type: String,
       required: true
+    },
+    panelRoute: {
+      type: String,
+      required: true
     }
   },
   components: {
-    Menu: _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__.Menu,
-    MenuButton: _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__.MenuButton,
-    MenuItems: _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__.MenuItems,
-    MenuItem: _headlessui_vue__WEBPACK_IMPORTED_MODULE_3__.MenuItem,
+    Menu: _headlessui_vue__WEBPACK_IMPORTED_MODULE_4__.Menu,
+    MenuButton: _headlessui_vue__WEBPACK_IMPORTED_MODULE_4__.MenuButton,
+    MenuItems: _headlessui_vue__WEBPACK_IMPORTED_MODULE_4__.MenuItems,
+    MenuItem: _headlessui_vue__WEBPACK_IMPORTED_MODULE_4__.MenuItem,
     UserCircleIcon: _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_2__.UserCircleIcon,
     LogoutIcon: _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_2__.LogoutIcon,
-    CsrfToken: _helpers_CsrfToken__WEBPACK_IMPORTED_MODULE_0__["default"]
+    CsrfToken: _helpers_CsrfToken__WEBPACK_IMPORTED_MODULE_0__["default"],
+    PresentationChartLineIcon: _heroicons_vue_outline__WEBPACK_IMPORTED_MODULE_3__.PresentationChartLineIcon
   },
   setup: function setup() {
     return {
@@ -20709,15 +20716,21 @@ var _hoisted_3 = ["href"];
 
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" My profile ");
 
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Logout ");
+var _hoisted_5 = ["href"];
 
-var _hoisted_6 = ["action"];
+var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Panel ");
+
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Logout ");
+
+var _hoisted_8 = ["action"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_MenuButton = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MenuButton");
 
   var _component_UserCircleIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("UserCircleIcon");
 
   var _component_MenuItem = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MenuItem");
+
+  var _component_PresentationChartLineIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("PresentationChartLineIcon");
 
   var _component_LogoutIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("LogoutIcon");
 
@@ -20777,9 +20790,30 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                 _: 1
                 /* STABLE */
 
-              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItem, null, {
+              }), $props.panelRoute ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_MenuItem, {
+                key: 0
+              }, {
                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref2) {
                   var active = _ref2.active;
+                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([active ? 'bg-gray-800 text-white' : 'text-gray-900', 'group flex rounded-md items-center w-full px-2 py-2 text-sm']),
+                    href: $props.panelRoute
+                  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_PresentationChartLineIcon, {
+                    active: active,
+                    "class": "w-5 h-5 mr-2",
+                    "aria-hidden": "true"
+                  }, null, 8
+                  /* PROPS */
+                  , ["active"]), _hoisted_6], 10
+                  /* CLASS, PROPS */
+                  , _hoisted_5)];
+                }),
+                _: 1
+                /* STABLE */
+
+              })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuItem, null, {
+                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function (_ref3) {
+                  var active = _ref3.active;
                   return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
                     type: "submit",
                     form: "logout-form",
@@ -20790,7 +20824,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     "aria-hidden": "true"
                   }, null, 8
                   /* PROPS */
-                  , ["active"]), _hoisted_5], 2
+                  , ["active"]), _hoisted_7], 2
                   /* CLASS */
                   )];
                 }),
@@ -20819,7 +20853,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     method: "POST"
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_CsrfToken)], 8
   /* PROPS */
-  , _hoisted_6)], 64
+  , _hoisted_8)], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -20876,8 +20910,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
   components: {
     'vue-setup': _VueSetup__WEBPACK_IMPORTED_MODULE_2__["default"],
     'c-input': _components_CInput__WEBPACK_IMPORTED_MODULE_3__["default"],
-    'mail-icon': _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_1__.MailIcon,
-    'dropdown': _components_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"]
+    'dropdown': _components_Dropdown__WEBPACK_IMPORTED_MODULE_4__["default"],
+    'mail-icon': _heroicons_vue_solid__WEBPACK_IMPORTED_MODULE_1__.MailIcon
   }
 }).mount('#app');
 

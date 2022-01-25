@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\LaravelData\WithData;
 use Spatie\Permission\Traits\HasRoles;
+use App\DTO\UserData;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -15,6 +17,9 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasFactory;
     use Notifiable;
     use HasRoles;
+    use WithData;
+
+    protected $dataClass = UserData::class;
 
     /**
      * The attributes that are mass assignable.

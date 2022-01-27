@@ -17,7 +17,8 @@
                 </a>
             @endif
             @if(\Illuminate\Support\Facades\Auth::user())
-                <logout-button action="{{ route('logout') }}" button-class="bg-white px-4 rounded bg-opacity-70 hover:bg-opacity-95 font-bold">@csrf</logout-button>
+                <button type="submit" form="logout-form" class="bg-white px-4 rounded bg-opacity-70 hover:bg-opacity-95 font-bold">@csrf Logout</button>
+                <form id="logout-form" class="hidden" action="{{ route('logout') }}" method="POST">@csrf</form>
             @endif
         </div>
 

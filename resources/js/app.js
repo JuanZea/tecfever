@@ -15,5 +15,5 @@ createApp({
         'dropdown': Dropdown,
         'mail-icon': MailIcon,
         'users-table': UsersTable,
-    }
+    },
 }).mount('#app');

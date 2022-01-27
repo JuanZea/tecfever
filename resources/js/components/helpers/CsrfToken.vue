@@ -1,14 +1,14 @@
 <template>
-    <input type="hidden" name="_token" :value="token">
+    <input type="hidden" name="_token" :value="token" />
 </template>
 
 <script>
-import { token } from '../../use'
+import { token } from '../../use';
 
 export default {
     name: 'CsrfToken',
     setup() {
-        return { token }
-    }
-}
+        return { token };
+    },
+};
 </script>

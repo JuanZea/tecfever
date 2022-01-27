@@ -3,7 +3,6 @@
 namespace App\DTO;
 
 use App\Models\User;
-use Carbon\Carbon;
 use Spatie\LaravelData\Data;
 
 class UserData extends Data

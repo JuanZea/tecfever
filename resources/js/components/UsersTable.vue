@@ -2,6 +2,7 @@
     <div class="mt-5 flex justify-center">
         <div>
             <table class="overflow-hidden rounded-lg border border-gray-200 shadow">
+                <caption>Users table</caption>
                 <thead class="bg-gray-100">
                     <tr>
                         <th
@@ -90,7 +91,6 @@
                     { label: 2, link: 'http://tecfever.test/users?page=2' },
                 ]"
             />
-            <!--            <pre>{{ pagination }}</pre>-->
         </div>
     </div>
 </template>

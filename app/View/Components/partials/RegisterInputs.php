@@ -5,7 +5,7 @@ namespace App\View\Components\partials;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class registerInputs extends Component
+class RegisterInputs extends Component
 {
     public function render(): View
     {

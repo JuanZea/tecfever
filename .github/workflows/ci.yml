@@ -44,4 +44,4 @@ jobs:
               run: composer run-script testdox
 
             - name: Fix code coverage paths for Sonar
-            run: sed -i 's/\/home\/runner\/work\/tecfever\/tecfever\//\/github\/workspace\//g' phpunit.coverage.xml
+              run: sed -i 's/\/home\/runner\/work\/tecfever\/tecfever\//\/github\/workspace\//g' phpunit.coverage.xml

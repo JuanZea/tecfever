@@ -2,7 +2,9 @@
     <div class="mt-5 flex justify-center">
         <div>
             <table class="overflow-hidden rounded-lg border border-gray-200 shadow">
-                <caption>Users table</caption>
+                <caption>
+                    Users table
+                </caption>
                 <thead class="bg-gray-100">
                     <tr>
                         <th

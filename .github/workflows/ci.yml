@@ -43,8 +43,5 @@ jobs:
                   DB_DATABASE: database/database.sqlite
               run: composer run-script testdox
 
-            - name: SonarCloud Scan
-              uses: SonarSource/sonarcloud-github-action@master
-              env:
-                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-                  SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+            - name: Fix code coverage paths for Sonar
+            run: sed -i 's/\/home\/runner\/work\/tecfever\/tecfever\//\/github\/workspace\//g' phpunit.coverage.xml

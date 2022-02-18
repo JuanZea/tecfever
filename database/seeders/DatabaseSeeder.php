@@ -7,12 +7,7 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         $this->call([RolesAndPermissionsSeeder::class]);
 
@@ -20,5 +15,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Juan Zea',
             'email' => 'j@admin.com',
         ])->create()->removeRole('user')->assignRole('admin');
+
+        $this->call([ProductsSeeder::class]);
     }
 }

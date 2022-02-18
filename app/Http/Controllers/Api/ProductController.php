@@ -3,57 +3,54 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Api\Product\StoreRequest;
+use App\Http\Requests\Api\Product\UpdateRequest;
+use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(): JsonResponse
     {
-        //
+        $products = Product::paginate(15);
+        return response()->json($products, 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(StoreRequest $request): JsonResponse
     {
-        //
+        $product = new Product();
+        $validatedData = $request->validated();
+
+        $product->name = $validatedData['name'];
+        $product->description = $validatedData['description'];
+        $product->price = $validatedData['price'];
+        $product->stock = $validatedData['stock'];
+
+        $product->save();
+        return response()->json($product, 201);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function show(Product $product): JsonResponse
     {
-        //
+        return response()->json($product, 200);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(UpdateRequest $request, Product $product)
     {
-        //
+        $validatedData = $request->validated();
+
+        $product->name = $validatedData['name'];
+        $product->description = $validatedData['description'];
+        $product->price = $validatedData['price'];
+        $product->stock = $validatedData['stock'];
+
+        $product->save();
+        return response()->json($product, 202);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
+    public function destroy(Product $product): JsonResponse
     {
-        //
+        $product->delete();
+        return response()->json(null, 204);
     }
 }

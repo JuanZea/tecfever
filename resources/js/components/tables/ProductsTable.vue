@@ -1,9 +1,9 @@
 <template>
     <div class="mt-5 flex justify-center">
         <div>
-            <table class="overflow-hidden rounded-lg border border-gray-200 shadow">
+            <table v-if="products" class="overflow-hidden rounded-lg border border-gray-200 shadow">
                 <caption>
-                    Users table
+                    Products table
                 </caption>
                 <thead class="bg-gray-100">
                     <tr>
@@ -23,13 +23,19 @@
                             scope="col"
                             class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
                         >
-                            Status
+                            Description
                         </th>
                         <th
                             scope="col"
                             class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
                         >
-                            Role
+                            Price
+                        </th>
+                        <th
+                            scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500"
+                        >
+                            Stock
                         </th>
                         <th scope="col" class="relative px-6 py-3">
                             <span class="sr-only">Delete</span>
@@ -37,42 +43,27 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="user in users" :key="user.id">
+                    <tr v-for="product in products" :key="product.id">
                         <td class="py-3 pl-6 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                            {{ user.id }}
+                            {{ product.id }}
                         </td>
-                        <td class="px-6 py-3 text-left text-xs font-medium text-gray-500">
-                            <div class="flex items-center">
-                                <img
-                                    class="h-10 w-10 rounded-full"
-                                    :src="`https://ui-avatars.com/api/?name=${user.name}&background=FF0000&color=fff&size=50&bold=true`"
-                                    alt="Avatar"
-                                />
-                                <div class="ml-4">
-                                    <div class="text-sm font-bold uppercase text-gray-900">
-                                        {{ user.name }}
-                                    </div>
-                                    <div class="text-sm text-gray-500">
-                                        {{ user.email }}
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="px-6 py-3 text-left text-xs font-medium tracking-wider text-gray-500">
-                            <span class="flex items-center gap-2 rounded-full px-4 py-1 text-sm font-medium">
-                                {{ user.disabledAt ? 'Disabled' : 'Enabled' }}
-                                <CSwitch
-                                    v-if="current !== user.id"
-                                    :initialStatus="!user.disabledAt"
-                                    @click="toggleStatus(user)"
-                                />
-                            </span>
+                        <td class="py-3 pl-6 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                            {{ product.name }}
                         </td>
                         <td class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
-                            {{ user.role }}
+                            <p class="w-80 truncate">
+                                {{ product.description }}
+                            </p>
+                        </td>
+                        <td class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                            {{ product.price }}
+                        </td>
+                        <td class="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500">
+                            {{ product.stock }}
                         </td>
                         <td class="relative px-6 py-3">
                             <button
+                                @click="destroy(product.id)"
                                 type="button"
                                 class="inline-flex items-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                             >
@@ -83,7 +74,11 @@
                     </tr>
                 </tbody>
             </table>
-            <Pagination
+
+            <div class="flex">
+                <div @click="goTo(link.url)" class="p-4 border rounded cursor-pointer hover:bg-black hover:text-white" v-for="link in links" :key="link.label">{{link.label}}</div>
+            </div>
+            <!-- <Pagination
                 :pages="[
                     {
                         label: 1,
@@ -92,30 +87,50 @@
                     },
                     { label: 2, link: 'http://tecfever.test/users?page=2' },
                 ]"
-            />
+            /> -->
         </div>
     </div>
 </template>
 
 <script>
-import CSwitch from './CSwitch';
-import Pagination from './Pagination';
+import CSwitch from '../CSwitch';
+import Pagination from '../Pagination';
 import { TrashIcon } from '@heroicons/vue/outline';
+import { ref } from '@vue/reactivity';
+import axios from 'axios';
 
 export default {
     name: 'UsersTable',
     components: { Pagination, CSwitch, TrashIcon },
-    props: {
-        users: { type: Object, required: true },
-        current: { type: Number, required: true },
-        pagination: { type: Object, required: true },
-    },
-    setup(props) {
-        console.log(props.pagination);
-        const toggleStatus = user => {
-            console.log(user);
+    setup() {
+        const products = ref();
+        const links = ref();
+
+        const getProducts = () => {
+            axios.get('http://tecfever.test/api/products').then(response => {
+                products.value = response.data.data;
+                links.value = response.data.links;
+            });
         };
-        return { toggleStatus };
+
+        getProducts();
+
+        const goTo = (url) => {
+            if(!url) return;
+
+            axios.get(url).then(response => {
+                products.value = response.data.data;
+                links.value = response.data.links;
+            });
+        }
+
+        const destroy = id => {
+            axios.delete('http://tecfever.test/api/products/' + id).then(() => {
+                getProducts();
+            });
+        };
+
+        return { products, links, destroy, goTo };
     },
 };
 </script>
